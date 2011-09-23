@@ -1,11 +1,9 @@
 
-void pushRobot();
-void drawRobot(float x, float y);
+#include <GL/glut.h>
+//#include "robot.h"
 
-// Push a/the robot to the stack
-void pushRobot() {
-	glPushMatrix();
-
+// Sample red robot
+void redRobot() {
 	// Red robots move faster
 	glColor3f(1.0, 0.0, 0.0);
 
@@ -15,26 +13,29 @@ void pushRobot() {
 
 	// Create a simple triangle bot aimed north
 	glBegin(GL_TRIANGLES);
-		glVertex2f(0.0, 0.0);
-		glVertex2f(1.0, 0.0);
-		glVertex2f(0.5, 1.0);
+		glVertex2f(0.0, 1.0);
+		glVertex2f(-1.0, -1.0);
+		glVertex2f(1.0, -1.0);
 	glEnd();
-
-	glPopMatrix();
 }
 
 // Draw the current robot on the stack
 // TODO: Take a pointer to a robot instead of a random feature
-void drawRobot(float x, float y) {
+void drawRobot(void (*robot)(), float x, float y, float theta) {
 	// Push the stack one deeper so we can play with the top
-	//glPushMatrix();
+	glPushMatrix();
+	
 	glLoadIdentity();
 
-	// Translate the pushed robot to it's new location
+	// Move to where we will draw the robot
 	glTranslatef(x, y, 0);
+	// Apply the appropriate rotation
+	glRotatef(-theta, 0.0, 0.0, 1.0);
+
+	// Put a robot on the stack
+	robot();
 
 	// Restore the stack
-	//glPopMatrix();
-	pushRobot();
+	glPopMatrix();
 }
 

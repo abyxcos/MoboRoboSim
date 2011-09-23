@@ -1,2 +1,4 @@
 // Ignore binary output
 bin
+src/sim
+*.o

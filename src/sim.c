@@ -14,14 +14,9 @@ void init(void) {
 void display(void) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	drawRobot(0, -1);
-	//pushRobot();
-
-	drawRobot(-1, -1);
-	//pushRobot();
-
-	drawRobot(-1, 0);
-	//pushRobot();
+	drawRobot(&redRobot, 0, -1, -45);
+	drawRobot(&redRobot, -1, -1, 45);
+	drawRobot(&redRobot, -0.5, 0, 180);
 
 	glFlush();
 	glutSwapBuffers();

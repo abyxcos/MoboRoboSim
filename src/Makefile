@@ -1,12 +1,22 @@
-# Make OSX work
+# Compiles on OSX
 # TODO: Port to linux
-CC=cc
-CFLAGS=-framework GLUT -framework OpenGL
-LDFLAGS=-I"/usr/X11/include"
 
-sim: sim.c sim.h robot.h
-	$(CC) $(CFLAGS) $@.c -o ../bin/$@ $(LDFLAGS)
+CFLAGS=-I"/usr/X11/include"
+LDFLAGS=-framework GLUT -framework OpenGL
+
+CC=cc
+
+all: sim
+
+sim: sim.o robot.o
+	$(CC) $(LDFLAGS) $+ -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $+ -o $@
+
+clean:
+	- rm sim *.o
 
 run: sim
-	../bin/sim
+	./sim
 
