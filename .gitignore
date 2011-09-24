@@ -1,4 +1,5 @@
 // Ignore binary output
 bin
 src/sim
+src/client
 *.o
