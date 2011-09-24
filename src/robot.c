@@ -1,6 +1,7 @@
 
 #include <GL/glut.h>
-//#include "robot.h"
+
+#include "include/robot.h"
 
 // Sample red robot
 void redRobot() {
