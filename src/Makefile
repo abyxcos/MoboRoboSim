@@ -2,7 +2,7 @@
 # TODO: Port to linux
 
 CFLAGS=-I"/usr/X11/include"
-LDFLAGS=-framework GLUT -framework OpenGL
+LDFLAGS=-framework GLUT -framework OpenGL -levent
 
 CC=cc
 
