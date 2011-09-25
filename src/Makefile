@@ -4,25 +4,22 @@
 CFLAGS=-I"/usr/X11/include"
 LDFLAGS=-framework GLUT -framework OpenGL
 
-BUILDDIR=../build
-BINDIR=../bin
-
 CC=cc
 
 all: sim client
 
-sim: $(BUILDDIR)/*.o
-	$(CC) $(LDFLAGS) $+ -o $(BINDIR)/$@
+sim: sim.o init.o server.o world.o robot.o
+	$(CC) $(LDFLAGS) $+ -o $@
 
 client: client.o
-	$(CC) $(LDFLAGS) $+ -o $(BINDIR)/$@
+	$(CC) $(LDFLAGS) $+ -o $@
 
-$(BUILDDIR)/%.o: %.c
-	$(CC) $(CFLAGS) -c $+ -o $(BUILDDIR)/
+%.o: %.c
+	$(CC) $(CFLAGS) -c $+
 
 clean:
-	- rm $(BINDIR)/* $(BUILDDIR)/*
+	- rm sim client *.o
 
 run: sim
-	$(BINDIR)/sim
+	./sim
 
