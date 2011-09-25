@@ -8,7 +8,7 @@ CC=cc
 
 all: sim client
 
-sim: sim.o init.o server.o world.o robot.o
+sim: sim.o server.o world.o robot.o
 	$(CC) $(LDFLAGS) $+ -o $@
 
 client: client.o

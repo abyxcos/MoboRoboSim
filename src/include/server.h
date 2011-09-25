@@ -1,6 +1,6 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-robotCommand readMessage(void);
+int initServer(int *argcp, char **argv);
 
 #endif /* SERVER_H */
