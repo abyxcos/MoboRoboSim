@@ -12,10 +12,4 @@
 #define WORLD_X 80
 #define WORLD_Y 60
 
-// Robot command structure
-typedef struct {
-	float speed;
-	float heading;
-} robotCommand;
-
 #endif /* SIM_H */

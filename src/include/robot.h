@@ -2,6 +2,6 @@
 #define ROBOT_H
 
 void redRobot();
-void drawRobot(void (*robot)(), float x, float y, float theta);
+void drawRobot(void (*)(), float, float, float);
 
 #endif /* ROBOT_H */

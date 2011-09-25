@@ -37,7 +37,7 @@ void buf_read_callback(struct bufferevent *incoming, void *arg) {
 	char *req;
 
 	req = evbuffer_readline(incoming->input);
-	if(req == NULL)
+	if (req == NULL)
 		return;
 	
 	evreturn = evbuffer_new();
@@ -65,7 +65,7 @@ void accept_callback(int fd, short ev, void *arg) {
 	struct client *client;
 
 	client_fd = accept(fd, (struct sockaddr *)&client_addr, &client_len);
-	if(client_fd < 0) {
+	if (client_fd < 0) {
 		warn("Client: accept() failed");
 		return;
 	}
@@ -73,7 +73,7 @@ void accept_callback(int fd, short ev, void *arg) {
 	setnonblock(client_fd);
 
 	client = calloc(1, sizeof(*client));
-	if(client == NULL)
+	if (client == NULL)
 		err(1, "malloc failed");
 	client->fd = client_fd;
 
@@ -91,7 +91,7 @@ int initServer(int *argcp, char **argv) {
 
 	socketlisten = socket(AF_INET, SOCK_STREAM, 0);
 
-	if(socketlisten < 0) {
+	if (socketlisten < 0) {
 		fprintf(stderr, "Failed to create listen socket");
 		return 1;
 	}
@@ -102,12 +102,12 @@ int initServer(int *argcp, char **argv) {
 	addresslisten.sin_addr.s_addr = INADDR_ANY;
 	addresslisten.sin_port = htons(25000);
 
-	if(bind(socketlisten, (struct sockaddr *)&addresslisten, sizeof(addresslisten)) < 0) {
+	if (bind(socketlisten, (struct sockaddr *)&addresslisten, sizeof(addresslisten)) < 0) {
 		fprintf(stderr, "Failed to bind");
 		return 1;
 	}
 
-	if(listen(socketlisten, 5) < 0) {
+	if (listen(socketlisten, 5) < 0) {
 		fprintf(stderr, "Failed to listen to socket");
 		return 1;
 	}
